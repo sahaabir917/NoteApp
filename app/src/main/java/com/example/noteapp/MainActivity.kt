@@ -7,6 +7,7 @@ import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import com.example.noteapp.databinding.ActivityMainBinding
 import com.example.noteapp.preference.PreferenceHelper
+import com.example.noteapp.views.DashboardActivity
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -34,7 +35,7 @@ class MainActivity : AppCompatActivity() {
            startActivity(Intent(this, LoginActivity::class.java))
        }
         else{
-            startActivity(Intent(this,MainActivity::class.java))
+            startActivity(Intent(this, DashboardActivity::class.java))
        }
     }
 }

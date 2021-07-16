@@ -7,4 +7,13 @@
         <item name="android:windowBackground">@color/white</item>
         <item name="android:includeFontPadding">false</item>
     </style>
+
+    <style name="MyCustomTabLayout2" parent="Widget.Design.TabLayout">
+        <item name="tabIndicatorColor">@null</item>
+        <item name="tabIndicatorHeight">2dp</item>
+        <item name="tabBackground">@drawable/tab_color_selector</item>
+        <item name="tabSelectedTextColor">@color/white</item>
+    </style>
+
+
 </resources>
