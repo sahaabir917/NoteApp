@@ -39,8 +39,6 @@ class RecyclerViewAdapter(val listener: RowClickListener) :
             listener.onItemClickListener(items[position])
         }
 
-
-
         holder.bind(items[position])
 
     }
@@ -52,6 +50,7 @@ class RecyclerViewAdapter(val listener: RowClickListener) :
         val tvDetails = view.textView9
         val tvDate = view.date
         val views = view.viewColorBorder
+        val deleteImage = view.imageView2
 
 
         fun bind(data: NotesModel) {
@@ -63,11 +62,16 @@ class RecyclerViewAdapter(val listener: RowClickListener) :
                 ContextCompat.getColor(views.context, ColorUtil.getColorByPosition(position))
             )
 
+            deleteImage.setOnClickListener {
+                listener.onItemDeleteListener(position)
+            }
+
+
         }
     }
 
     interface RowClickListener {
-        fun onDeleteUserClickListener(user: NotesModel)
-        fun onItemClickListener(user: NotesModel)
+        fun onItemDeleteListener(position: Int)
+        fun onItemClickListener(note: NotesModel)
     }
 }

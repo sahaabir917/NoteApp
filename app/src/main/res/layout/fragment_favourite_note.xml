@@ -3,7 +3,8 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".views.NoteFragment">
+    tools:context=".views.FavouriteNoteFragment">
+
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -19,7 +20,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
-            android:text="My Notes"
+            android:text="Favourite Notes"
             android:textSize="40sp"
             app:layout_constraintBottom_toTopOf="@+id/linearLayout"
             app:layout_constraintStart_toStartOf="parent"
@@ -117,4 +118,5 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>
+
 

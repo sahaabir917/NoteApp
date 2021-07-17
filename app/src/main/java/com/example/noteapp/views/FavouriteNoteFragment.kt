@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,24 +15,22 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.noteapp.R
 import com.example.noteapp.adapters.RecyclerViewAdapter
-import com.example.noteapp.databinding.FragmentNoteBinding
+import com.example.noteapp.databinding.FragmentFavouriteNoteBinding
 import com.example.noteapp.model.NotesModel
 import com.example.noteapp.viewmodels.DashboardViewModel
 import com.google.gson.Gson
-import java.util.*
-import kotlin.collections.ArrayList
 
 
-class NoteFragment : Fragment(), RecyclerViewAdapter.RowClickListener {
-
+class FavouriteNoteFragment : Fragment(), RecyclerViewAdapter.RowClickListener {
     private val filerList: ArrayList<NotesModel> = ArrayList<NotesModel>()
-    private lateinit var binding: FragmentNoteBinding
+    private lateinit var binding: FragmentFavouriteNoteBinding
     lateinit var viewModel: DashboardViewModel
     var title: String = ""
     var description: String = ""
     private var allNotes: ArrayList<NotesModel> = ArrayList<NotesModel>()
     lateinit var recyclerViewAdapter: RecyclerViewAdapter
     var date: String = ""
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -45,13 +42,13 @@ class NoteFragment : Fragment(), RecyclerViewAdapter.RowClickListener {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        // Inflate the layout for this fragment
+//        return inflater.inflate(R.layout.fragment_favourite_note, container, false)
         binding =
-            DataBindingUtil.inflate(inflater, R.layout.fragment_note, container, false)
+            DataBindingUtil.inflate(inflater, R.layout.fragment_favourite_note, container, false)
         viewRelatedWork()
         return binding.root
 
-        // Inflate the layout for this fragment
-//        return inflater.inflate(R.layout.fragment_note, container, false)
     }
 
     private fun viewRelatedWork() {
@@ -67,26 +64,28 @@ class NoteFragment : Fragment(), RecyclerViewAdapter.RowClickListener {
         })
     }
 
+    override fun onResume() {
+        super.onResume()
+        viewModel.getAllFavNotes()
+    }
+
     private fun initSearch() {
         binding.appCompatEditTextSearch.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-//                viewModel.getAllNotes()
-
+//                viewModel.getAllFavNotes()
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-//                Log.d("textchange","textchange")
 
             }
 
             override fun afterTextChanged(s: Editable?) {
                 if (s.toString().length == 0) {
-                    viewModel.getAllNotes()
-                } else if(s.toString().length>=1) {
+                    viewModel.getAllFavNotes()
+                } else if (s.toString().length >= 1) {
                     filerList.clear()
                     filterValues(s.toString())
                 }
-
             }
 
         })
@@ -109,10 +108,6 @@ class NoteFragment : Fragment(), RecyclerViewAdapter.RowClickListener {
         recyclerViewAdapter.notifyDataSetChanged()
     }
 
-    override fun onResume() {
-        super.onResume()
-        viewModel.getAllNotes()
-    }
 
     private fun initClickListeners() {
         binding.btnAdd.setOnClickListener {
@@ -124,7 +119,7 @@ class NoteFragment : Fragment(), RecyclerViewAdapter.RowClickListener {
     private fun initRecyclerView() {
         binding.allNotes.apply {
             layoutManager = LinearLayoutManager(context)
-            recyclerViewAdapter = RecyclerViewAdapter(this@NoteFragment)
+            recyclerViewAdapter = RecyclerViewAdapter(this@FavouriteNoteFragment)
             adapter = recyclerViewAdapter
             val divider =
                 DividerItemDecoration(context, StaggeredGridLayoutManager.VERTICAL)
@@ -137,16 +132,15 @@ class NoteFragment : Fragment(), RecyclerViewAdapter.RowClickListener {
 
         @JvmStatic
         fun newInstance() =
-            NoteFragment().apply {
+            FavouriteNoteFragment().apply {
                 arguments = Bundle().apply {
 
                 }
             }
     }
 
-
     override fun onItemDeleteListener(position: Int) {
-        viewModel.deleteNote(allNotes!![position])
+        viewModel.deleteNotes(allNotes!![position])
     }
 
     override fun onItemClickListener(note: NotesModel) {

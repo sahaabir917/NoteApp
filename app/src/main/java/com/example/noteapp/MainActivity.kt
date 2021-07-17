@@ -1,13 +1,11 @@
 package com.example.noteapp
 
 import android.content.Intent
-import android.content.SharedPreferences
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.example.noteapp.databinding.ActivityMainBinding
 import com.example.noteapp.preference.PreferenceHelper
-import com.example.noteapp.views.DashboardActivity
 import com.example.noteapp.views.HomePageActivity
 
 class MainActivity : AppCompatActivity() {
@@ -32,11 +30,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initCheckLoginStatus() {
-       if(!preferences.getIsLoginMood()){
-           startActivity(Intent(this, LoginActivity::class.java))
-       }
-        else{
+        if (!preferences.getIsLoginMood()) {
+            startActivity(Intent(this, LoginActivity::class.java))
+        } else {
             startActivity(Intent(this, HomePageActivity::class.java))
-       }
+        }
     }
 }

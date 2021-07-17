@@ -16,16 +16,17 @@ import com.example.noteapp.adapters.RecyclerViewAdapter
 import com.example.noteapp.databinding.ActivityDashboardBinding
 import com.example.noteapp.model.NotesModel
 import com.example.noteapp.viewmodels.DashboardViewModel
+import java.text.FieldPosition
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.collections.ArrayList
 
 class DashboardActivity : AppCompatActivity(), RecyclerViewAdapter.RowClickListener {
+    private var allNotes: ArrayList<NotesModel>? = null
     private lateinit var binding: ActivityDashboardBinding
     lateinit var viewModel: DashboardViewModel
-    var title: String = ""
-    var description: String = ""
+
     lateinit var recyclerViewAdapter: RecyclerViewAdapter
-    var date: String = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_dashboard)
@@ -38,6 +39,7 @@ class DashboardActivity : AppCompatActivity(), RecyclerViewAdapter.RowClickListe
         initClickListeners()
         viewModel = ViewModelProviders.of(this).get(DashboardViewModel::class.java)
         viewModel.getAllNotessObservers().observe(this, androidx.lifecycle.Observer {
+            allNotes = ArrayList(it)
             recyclerViewAdapter.setListData(ArrayList(it))
             recyclerViewAdapter.notifyDataSetChanged()
         })
@@ -88,9 +90,10 @@ class DashboardActivity : AppCompatActivity(), RecyclerViewAdapter.RowClickListe
         }
     }
 
-    override fun onDeleteUserClickListener(user: NotesModel) {
-
+    override fun onItemDeleteListener(position: Int) {
+        viewModel.deleteNote(allNotes!![position])
     }
+
 
     override fun onItemClickListener(user: NotesModel) {
 

@@ -9,13 +9,15 @@ interface NoteDao {
     @Query("SELECT * FROM notes ORDER BY id DESC")
     fun getAllNotes(): List<NotesModel>?
 
+    @Query("SELECT * FROM notes WHERE isFavourite = 1")
+    fun getFavouriteNotes() : List<NotesModel>?
 
     @Insert
-    fun insertUser(note: NotesModel?)
+    fun insertNote(note: NotesModel?)
 
     @Delete
-    fun deleteUser(note: NotesModel?)
+    fun deleteNote(note: NotesModel?)
 
     @Update
-    fun updateUser(user: NotesModel?)
+    fun updateNote(user: NotesModel?)
 }

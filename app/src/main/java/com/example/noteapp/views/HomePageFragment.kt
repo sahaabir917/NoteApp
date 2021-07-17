@@ -13,7 +13,7 @@ import com.example.noteapp.databinding.FragmentHomePageBinding
 import com.google.android.material.tabs.TabLayout
 
 
-class HomePageFragment : Fragment() {
+class HomePageFragment : Fragment(),DashBoardFragment.DashBoardListeners {
 
     private lateinit var binding : FragmentHomePageBinding
     private lateinit var tabAdapter: TabsPagerAdapter
@@ -112,5 +112,17 @@ class HomePageFragment : Fragment() {
 
                 }
             }
+    }
+
+    override fun onNoteLayoutClicked() {
+        binding.viewPager.currentItem = 1
+    }
+
+    override fun onRemenderLayoutClicked() {
+
+    }
+
+    override fun onSheduleLayoutClicked() {
+
     }
 }

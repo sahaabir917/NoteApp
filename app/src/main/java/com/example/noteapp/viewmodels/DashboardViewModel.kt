@@ -4,7 +4,6 @@ import android.app.Application
 import android.content.Context
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import com.example.noteapp.db.RoomAppDb
 import com.example.noteapp.model.NotesModel
 
@@ -26,21 +25,36 @@ class DashboardViewModel(app: Application) : AndroidViewModel(app) {
         allNotes.postValue(list)
     }
 
+
+     fun getAllFavNotes() {
+        val noteDao = RoomAppDb.getAppDatabase(getApplication())?.noteDao()
+        val list = noteDao?.getFavouriteNotes()
+        allNotes.postValue(list)
+    }
+
     fun insertNote(entity: NotesModel){
         val noteDao = RoomAppDb.getAppDatabase(getApplication())?.noteDao()
-        noteDao?.insertUser(entity)
+        noteDao?.insertNote(entity)
         getAllNotes()
     }
 
     fun updateNote(entity: NotesModel){
         val noteDao = RoomAppDb.getAppDatabase(getApplication())?.noteDao()
-        noteDao?.updateUser(entity)
+        noteDao?.updateNote(entity)
         getAllNotes()
     }
 
     fun deleteNote(entity: NotesModel){
-        val noteDao = RoomAppDb.getAppDatabase(mContext)?.noteDao()
-        noteDao?.deleteUser(entity)
+        val noteDao = RoomAppDb.getAppDatabase(getApplication())?.noteDao()
+        noteDao?.deleteNote(entity)
         getAllNotes()
     }
+
+    fun deleteNotes(notesModel: NotesModel) {
+        val noteDao = RoomAppDb.getAppDatabase(getApplication())?.noteDao()
+        noteDao?.deleteNote(notesModel)
+        getAllFavNotes()
+    }
+
+
 }
