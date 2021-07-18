@@ -43,7 +43,7 @@ class AddNoteActivity : AppCompatActivity() {
             val m = c.get(Calendar.MONTH)
             val d = c.get(Calendar.DAY_OF_MONTH)
             val dpd = DatePickerDialog(
-                this, AlertDialog.THEME_HOLO_LIGHT,
+                this, AlertDialog.THEME_DEVICE_DEFAULT_LIGHT,
                 DatePickerDialog.OnDateSetListener { _, year, monthOfYear, dayOfMonth ->
                     val cal = Calendar.getInstance()
                     cal.set(year, monthOfYear, dayOfMonth)

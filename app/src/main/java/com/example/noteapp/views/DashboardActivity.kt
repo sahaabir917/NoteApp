@@ -46,36 +46,6 @@ class DashboardActivity : AppCompatActivity(), RecyclerViewAdapter.RowClickListe
     }
 
     private fun initClickListeners() {
-//        binding.saveBtn.setOnClickListener {
-//            title = binding.etTitle.text.toString()
-//            description = binding.etDescription.text.toString()
-//            date = binding.etDate.text.toString()
-//            val notesModel = NotesModel(0, title, description, date, favourite = false)
-//            viewModel.insertNote(notesModel)
-//        }
-
-//        binding.linearLayout.setOnClickListener {
-//            val c = Calendar.getInstance()
-//            val y = c.get(Calendar.YEAR)
-//            val m = c.get(Calendar.MONTH)
-//            val d = c.get(Calendar.DAY_OF_MONTH)
-//            val dpd = DatePickerDialog(
-//                this, AlertDialog.THEME_HOLO_LIGHT,
-//                DatePickerDialog.OnDateSetListener { _, year, monthOfYear, dayOfMonth ->
-//                    val cal = Calendar.getInstance()
-//                    cal.set(year, monthOfYear, dayOfMonth)
-//                    val sdf = SimpleDateFormat("dd MMMM yyyy").format(Date(cal.timeInMillis))
-//                    binding.etDate.text = sdf
-//                },
-//                y,
-//                m,
-//                d
-//            )
-//            dpd.show()
-//        }
-
-
-
 
     }
 

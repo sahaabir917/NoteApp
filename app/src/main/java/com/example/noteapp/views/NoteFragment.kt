@@ -26,6 +26,7 @@ import kotlin.collections.ArrayList
 
 class NoteFragment : Fragment(), RecyclerViewAdapter.RowClickListener {
 
+    private lateinit var copiedNotes: ArrayList<NotesModel>
     private val filerList: ArrayList<NotesModel> = ArrayList<NotesModel>()
     private lateinit var binding: FragmentNoteBinding
     lateinit var viewModel: DashboardViewModel
@@ -62,6 +63,7 @@ class NoteFragment : Fragment(), RecyclerViewAdapter.RowClickListener {
         viewModel.getAllNotessObservers().observe(requireActivity(), androidx.lifecycle.Observer {
             allNotes.clear()
             allNotes = ArrayList(it)
+            copiedNotes = ArrayList(it)
             recyclerViewAdapter.setListData(ArrayList(it))
             recyclerViewAdapter.notifyDataSetChanged()
         })
@@ -94,7 +96,7 @@ class NoteFragment : Fragment(), RecyclerViewAdapter.RowClickListener {
 
     private fun filterValues(searchKey: String?) {
 
-        for (item in allNotes) {
+        for (item in copiedNotes) {
             if (searchKey != null) {
                 if (item.title.toLowerCase().contains(searchKey.toLowerCase())) {
                     this.filerList.add(item)
@@ -146,7 +148,7 @@ class NoteFragment : Fragment(), RecyclerViewAdapter.RowClickListener {
 
 
     override fun onItemDeleteListener(position: Int) {
-        viewModel.deleteNote(allNotes!![position])
+//        viewModel.deleteNote(allNotes!![position])
     }
 
     override fun onItemClickListener(note: NotesModel) {

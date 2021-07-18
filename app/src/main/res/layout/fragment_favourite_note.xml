@@ -21,7 +21,9 @@
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
             android:text="Favourite Notes"
-            android:textSize="40sp"
+            android:textSize="25sp"
+            android:textColor="@color/newblack"
+            android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/linearLayout"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

@@ -1,22 +1,20 @@
 package com.example.noteapp.views
 
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import com.bumptech.glide.Glide
-import com.example.noteapp.LoginActivity
 import com.example.noteapp.R
 import com.example.noteapp.databinding.FragmentDashBoardBinding
 import com.example.noteapp.model.NotesModel
 import com.example.noteapp.preference.PreferenceHelper
 import com.example.noteapp.viewmodels.DashboardViewModel
-import java.util.ArrayList
+import java.util.*
 
 
 class DashBoardFragment : Fragment() {
@@ -68,18 +66,21 @@ class DashBoardFragment : Fragment() {
         preferences = PreferenceHelper(mContext)
         var userModel = preferences.getLoginData()
         if (userModel != null) {
-            binding.textView8.text = userModel.UserFullName.toString()
+
+
+            binding.textView22.text = userModel.UserFullName.toString()
             Glide.with(mContext)
                 .load("http://3.129.13.191:8082/" + userModel.Picture)
                 .placeholder(R.drawable.ic_placeholder_user)
                 .error(R.drawable.ic_placeholder_user)
                 .into(binding.profilePic)
+
         }
 
     }
 
     private fun BindInfo() {
-        binding.textView2.text = ((allNotes?.size ?: 0) ).toString()
+        binding.textView2.text = ((allNotes?.size ?: 0)).toString()
     }
 
 
@@ -94,6 +95,14 @@ class DashBoardFragment : Fragment() {
 //            startActivity(Intent(context,DashboardActivity::class.java))
             dashBoardListeners.onNoteLayoutClicked()
         }
+
+        binding.linearLayout4.setOnClickListener {
+            dashBoardListeners.onSheduleLayoutClicked()
+        }
+
+        binding.appCompatEditTextSearch.setOnClickListener {
+            dashBoardListeners.onSheduleLayoutClicked()
+        }
     }
 
     companion object {
@@ -107,10 +116,10 @@ class DashBoardFragment : Fragment() {
             }
     }
 
-    interface DashBoardListeners{
-       fun onNoteLayoutClicked()
-       fun onRemenderLayoutClicked()
-       fun onSheduleLayoutClicked()
+    interface DashBoardListeners {
+        fun onNoteLayoutClicked()
+        fun onRemenderLayoutClicked()
+        fun onSheduleLayoutClicked()
     }
 
 }

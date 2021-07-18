@@ -20,7 +20,9 @@
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
             android:text="My Notes"
-            android:textSize="40sp"
+            android:textColor="@color/newblack"
+            android:textStyle="bold"
+            android:textSize="25sp"
             app:layout_constraintBottom_toTopOf="@+id/linearLayout"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -75,7 +77,9 @@
             android:background="@drawable/bg_white_border"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:padding="8dp"
+            android:padding="3dp"
+            android:paddingRight="5dp"
+            android:paddingLeft="5dp"
             android:weightSum="1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -96,7 +100,7 @@
                 android:layout_weight="0.9"
                 android:background="@android:color/transparent"
                 android:hint="Search here..."
-                android:padding="3dp"
+                android:padding="6dp"
                 android:textSize="13sp" />
 
 

@@ -1,5 +1,6 @@
 package com.example.noteapp
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -12,6 +13,7 @@ import com.example.noteapp.model.LoginCredential
 import com.example.noteapp.model.UserModel
 import com.example.noteapp.preference.PreferenceHelper
 import com.example.noteapp.viewmodels.LoginViewModel
+import com.example.noteapp.views.HomePageActivity
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var userModel: UserModel
@@ -42,6 +44,7 @@ class LoginActivity : AppCompatActivity() {
                     preferenceHelper.setLoginData(userModel)
                     preferenceHelper.setIsLoginMood(true)
                     //start a activity here
+                    startActivity(Intent(this,HomePageActivity::class.java))
                 }
                 else {
                     Toast.makeText(this, "Error in fetching data", Toast.LENGTH_SHORT).show()

@@ -71,6 +71,12 @@ class NoteDescription : AppCompatActivity() {
             )
         }
 
+
+        binding.delBtn.setOnClickListener {
+            viewModel.deleteNote(noteModel)
+            onBackPressed()
+        }
+
     }
 
     private fun viewRelatedWork() {

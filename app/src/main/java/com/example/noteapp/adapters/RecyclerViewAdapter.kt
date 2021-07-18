@@ -62,9 +62,9 @@ class RecyclerViewAdapter(val listener: RowClickListener) :
                 ContextCompat.getColor(views.context, ColorUtil.getColorByPosition(position))
             )
 
-            deleteImage.setOnClickListener {
-                listener.onItemDeleteListener(position)
-            }
+//            deleteImage.setOnClickListener {
+//                listener.onItemDeleteListener(position)
+//            }
 
 
         }

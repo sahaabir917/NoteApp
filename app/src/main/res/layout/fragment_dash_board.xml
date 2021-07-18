@@ -52,7 +52,9 @@
                 android:background="@drawable/bg_white_border"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
-                android:padding="8dp"
+                android:padding="3dp"
+                android:paddingRight="5dp"
+                android:paddingLeft="5dp"
                 android:layout_marginTop="30dp"
                 android:weightSum="1"
                 app:layout_constraintEnd_toEndOf="@+id/constraintLayout4"
@@ -63,6 +65,9 @@
                 <androidx.appcompat.widget.AppCompatEditText
                     android:id="@+id/appCompatEditTextSearch"
                     android:layout_width="0dp"
+                    android:focusedByDefault="false"
+                    android:focusable="false"
+                    android:cursorVisible="false"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="5dp"
@@ -70,9 +75,10 @@
                     android:layout_marginEnd="5dp"
                     android:layout_marginRight="5dp"
                     android:layout_weight="0.9"
+                    android:enabled="false"
                     android:background="@android:color/transparent"
                     android:hint="Search here..."
-                    android:padding="3dp"
+                    android:padding="6dp"
                     android:textSize="13sp" />
 
 
@@ -186,7 +192,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="20dp"
                     android:layout_marginRight="20dp"
-                    android:text="13"
+                    android:text="0"
                     android:textColor="@color/white"
                     android:textSize="15sp"
                     app:layout_constraintBottom_toBottomOf="@+id/imageView5"
@@ -293,18 +299,33 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-            <TextView
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/textView8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
                 android:layout_marginLeft="4dp"
                 android:layout_marginTop="80dp"
-                android:text="Welcome John Deo"
+                android:text="Welcome"
                 android:textSize="25dp"
+                android:textColor="@color/newblack"
                 app:layout_constraintStart_toStartOf="@+id/linearLayout4"
                 app:layout_constraintTop_toTopOf="parent" />
 
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/text_view22"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="j"
+                android:textSize="25dp"
+                android:textColor="@color/coloraccentred"
+                android:textStyle="bold"
+                android:layout_marginStart="10dp"
+                app:layout_constraintBottom_toBottomOf="@+id/textView8"
+                app:layout_constraintStart_toEndOf="@+id/textView8"
+                app:layout_constraintTop_toTopOf="@+id/textView8"
+                android:layout_marginLeft="10dp" />
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/profile_pic"
@@ -314,8 +335,7 @@
                 app:layout_constraintBottom_toBottomOf="@+id/textView8"
                 app:layout_constraintEnd_toEndOf="@+id/linearLayout4"
                 app:layout_constraintHorizontal_bias="0.824"
-                app:layout_constraintStart_toEndOf="@+id/textView8"
-                app:layout_constraintTop_toTopOf="@+id/textView8" />
+                app:layout_constraintStart_toEndOf="@+id/textView8" />
 
 
             <CalendarView

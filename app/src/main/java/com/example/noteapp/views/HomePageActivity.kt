@@ -53,8 +53,8 @@ class HomePageActivity : AppCompatActivity(), DashBoardFragment.DashBoardListene
             val dashboardFragment = DashBoardFragment()
             val noteFragment = NoteFragment()
             val favouriteFragment = FavouriteNoteFragment()
-            val scheduleFragment = NoteFragment()
-            val settingsFragment = DashBoardFragment()
+            val scheduleFragment = ScheduleFragment()
+            val settingsFragment = SettingsFragment()
 
 //            binding.tabLayout.tabMode = TabLayout.MODE_SCROLLABLE
 //            binding.tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
@@ -63,19 +63,19 @@ class HomePageActivity : AppCompatActivity(), DashBoardFragment.DashBoardListene
             tabAdapter = TabsPagerAdapter(supportFragmentManager)
             tabAdapter
                 .addFragment(
-                    scheduleFragment, "My Friends"
+                    scheduleFragment, "schedulefragment"
                 )
                 .addFragment(
-                    noteFragment, "Add Friend"
+                    noteFragment, "Note Page"
                 )
                 .addFragment(
-                    dashboardFragment, "Requests"
+                    dashboardFragment, "DashBoard"
                 )
                 .addFragment(
-                    favouriteFragment, "Sent Requests"
+                    favouriteFragment, "Favourite Page"
                 )
                 .addFragment(
-                    settingsFragment, "Sent Requests"
+                    settingsFragment, "Settings Page"
                 )
 
 
@@ -143,11 +143,10 @@ class HomePageActivity : AppCompatActivity(), DashBoardFragment.DashBoardListene
     }
 
     override fun onRemenderLayoutClicked() {
-
     }
 
     override fun onSheduleLayoutClicked() {
-
+        binding.viewPager.currentItem = 1
     }
 
 

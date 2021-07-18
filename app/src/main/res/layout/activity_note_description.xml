@@ -10,6 +10,17 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <ImageView
+            android:id="@+id/del_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_delete_outline_24"
+            app:layout_constraintBottom_toBottomOf="@+id/fav_btn"
+            app:layout_constraintEnd_toStartOf="@+id/fav_btn"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.97"
+            app:layout_constraintTop_toTopOf="@+id/fav_btn" />
+
 
         <ImageView
             android:visibility="visible"
